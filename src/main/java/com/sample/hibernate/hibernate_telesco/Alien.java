@@ -12,20 +12,21 @@ public class Alien {
 	@Id
 	private int aId;
 	
-	private String aName;
+	private AlienName alienName;
 	@Column(name="Alien_Color")
 	private String color;
+
 	public int getaId() {
 		return aId;
 	}
 	public void setaId(int aId) {
 		this.aId = aId;
 	}
-	public String getaName() {
-		return aName;
+	public AlienName getalienName() {
+		return alienName;
 	}
-	public void setaName(String aName) {
-		this.aName = aName;
+	public void setalienName(AlienName alienName) {
+		this.alienName = alienName;
 	}
 	public String getColor() {
 		return color;
@@ -35,7 +36,7 @@ public class Alien {
 	}
 	@Override
 	public String toString() {
-		return "Alien [aId=" + aId + ", aName=" + aName + ", color=" + color + "]";
+		return "Alien [aId=" + aId + ", aName=" + alienName + ", color=" + color + "]";
 	}
 	
 	

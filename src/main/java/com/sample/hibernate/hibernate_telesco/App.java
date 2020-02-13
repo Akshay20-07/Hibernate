@@ -16,10 +16,15 @@ public class App
 {
     public static void main( String[] args )
     {
-        Alien alien;
-/*        alien.setaId(3);
-        alien.setaName("nOtho");
-        alien.setColor("Orange");*/
+    	AlienName aName=new AlienName();
+    	aName.setfName("Akshay");
+    	aName.setmName("Singh");
+    	aName.setlName("Chauhan");
+    	
+        Alien alien=new Alien();
+        alien.setaId(2);
+        alien.setColor("Orange");
+        alien.setalienName(aName);
         
         Configuration con =new Configuration().configure().addAnnotatedClass(Alien.class);
         
@@ -30,9 +35,11 @@ public class App
         Session session=sf.openSession();
         
         Transaction txn=session.beginTransaction();
-//        session.save(alien);
-        
-        alien=(Alien) session.get(Alien.class,3);
+        session.save(alien);
+        /**
+         * For Fetching the Values
+         */
+        //alien=(Alien) session.get(Alien.class,3);
         
         txn.commit();
         
