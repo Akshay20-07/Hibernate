@@ -17,8 +17,8 @@ public class App
     public static void main( String[] args )
     {
         Alien alien=new Alien();
-        alien.setaId(2);
-        alien.setaName("SomeOne");
+        alien.setaId(3);
+        alien.setaName("nOtho");
         alien.setColor("Orange");
         
         Configuration con =new Configuration().configure().addAnnotatedClass(Alien.class);
