@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name="Alien_Table")
@@ -12,7 +11,7 @@ public class Alien {
 
 	@Id
 	private int aId;
-	@Transient
+	
 	private String aName;
 	@Column(name="Alien_Color")
 	private String color;
@@ -34,4 +33,10 @@ public class Alien {
 	public void setColor(String color) {
 		this.color = color;
 	}
+	@Override
+	public String toString() {
+		return "Alien [aId=" + aId + ", aName=" + aName + ", color=" + color + "]";
+	}
+	
+	
 }

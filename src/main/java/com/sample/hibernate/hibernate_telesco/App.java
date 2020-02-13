@@ -16,10 +16,10 @@ public class App
 {
     public static void main( String[] args )
     {
-        Alien alien=new Alien();
-        alien.setaId(3);
+        Alien alien;
+/*        alien.setaId(3);
         alien.setaName("nOtho");
-        alien.setColor("Orange");
+        alien.setColor("Orange");*/
         
         Configuration con =new Configuration().configure().addAnnotatedClass(Alien.class);
         
@@ -30,9 +30,13 @@ public class App
         Session session=sf.openSession();
         
         Transaction txn=session.beginTransaction();
-        session.save(alien);
+//        session.save(alien);
+        
+        alien=(Alien) session.get(Alien.class,3);
         
         txn.commit();
+        
+        System.out.println(alien);
         
     }
 }
