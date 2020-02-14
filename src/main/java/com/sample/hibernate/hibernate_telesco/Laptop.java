@@ -1,11 +1,8 @@
 package com.sample.hibernate.hibernate_telesco;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Laptop {
@@ -14,10 +11,12 @@ public class Laptop {
 	private int lapId;
 	private String lapName;
 	
-	/*@ManyToOne
-	private Student stud;*/
+	@ManyToOne
+	private Laptop laptop;
+	@ManyToOne
+	private Student stud;
 	
-	@ManyToMany
+	/*@ManyToMany
 	private List<Student> stud=new ArrayList<Student>();
 	
 	
@@ -26,7 +25,20 @@ public class Laptop {
 	}
 	public void setStudent(List<Student> stud) {
 		this.stud = stud;
+	}*/
+	
+public Laptop getLaptop() {
+		return laptop;
 	}
+	public void setLaptop(Laptop laptop) {
+		this.laptop = laptop;
+	}
+	/*	public Student getStud() {
+		return stud;
+	}
+	public void setStud(Student stud) {
+		this.stud = stud;
+	}*/
 	public int getLapId() {
 		return lapId;
 	}

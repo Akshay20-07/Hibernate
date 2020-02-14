@@ -1,8 +1,13 @@
 package com.sample.hibernate.hibernate_telesco;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +20,17 @@ public class Alien {
 	private AlienName alienName;
 	@Column(name="Alien_Color")
 	private String color;
+	
+	@ManyToMany(mappedBy="laptop",fetch=FetchType.EAGER)
+	private List<Laptop> lap=new ArrayList<Laptop>();
+	
+	public List<Laptop> getLap() {
+		return lap;
+	}
+	
+	public void setLap(List<Laptop> lap) {
+		this.lap = lap;
+	}
 
 	public int getaId() {
 		return aId;

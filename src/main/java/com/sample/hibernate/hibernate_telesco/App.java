@@ -1,14 +1,11 @@
 package com.sample.hibernate.hibernate_telesco;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
 
 /**
  * Hello world!
@@ -52,7 +49,11 @@ public class App {
 
 	}*/
 	
-	public static void main(String[] args) {
+	/**
+	 * To implement OneToOne .OneToMany and ManyToMany
+	 * @param args
+	 */
+	/*public static void main(String[] args) {
 
 		Laptop l1=new Laptop();
 		l1.setLapId(100);
@@ -79,5 +80,25 @@ public class App {
 		txn.commit();
 		
 		
+	}*/
+	
+	public static void main(String[] args) {
+		Configuration con=new Configuration().configure().addAnnotatedClass(Laptop.class).addAnnotatedClass(Alien.class).addAnnotatedClass(Student.class);
+		
+		SessionFactory sf=con.buildSessionFactory();
+		Session session=sf.openSession();
+		
+		Transaction txn=session.beginTransaction();
+		
+		Alien a1=(Alien) session.get(Alien.class, 2);
+		System.out.println(a1.getalienName());
+		
+/*		Collection<Laptop> laps=a1.getLap();
+		
+		System.out.println(laps.toString());
+		for(Laptop l:laps){
+			System.out.println(l);
+		}*/
+		txn.commit();
 	}
 }
