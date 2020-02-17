@@ -2,7 +2,6 @@ package com.sample.hibernate.hibernate_cache;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
@@ -12,7 +11,7 @@ public class App {
 		
 		AlienCache a=null;
 		
-		Configuration con= new Configuration().configure().addAnnotatedClass(AlienCache.class);
+		Configuration con= new Configuration().configure("/hibernate.cfg.xml").addAnnotatedClass(AlienCache.class);
 		ServiceRegistry reg=new ServiceRegistryBuilder().applySettings(con.getProperties()).buildServiceRegistry();
 		SessionFactory sf=con.buildSessionFactory(reg);
 		Session session1=sf.openSession();
