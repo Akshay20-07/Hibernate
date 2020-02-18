@@ -1,8 +1,11 @@
 package com.sample.hibernate.hibernate_postgres;
 
 import java.util.List;
+import java.util.Map;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -29,7 +32,8 @@ public class App {
 			session1.save(st);
 		}*/
 		
-		Query q=session.createQuery("from Student where marks>50");
+		//HQL Queries
+/*		Query q=session.createQuery("from Student where marks>50");
 		List<Student> students=q.list();
 		
 		for(Student s:students){
@@ -43,8 +47,25 @@ public class App {
 		
 		System.out.println(marks);
 		session.getTransaction().commit();
-		session.close();
+		session.close();*/
 		
+		//Native Queries
+		SQLQuery q=session.createSQLQuery("select * from Student where marks >60");
+		q.addEntity(Student.class);
+		List<Student> st=q.list();
+		
+		for(Student s:st){
+			System.out.println(s);
+		}
+		
+		SQLQuery q2=session.createSQLQuery("select name,marks from Student where marks >60 ");
+		q2.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+		List st2=q2.list();
+		
+		for(Object s:st2){
+			Map m=(Map)s;
+			System.out.println(m.get("name")+ ":"+m.get("marks"));
+		}
 	}
 	
 
