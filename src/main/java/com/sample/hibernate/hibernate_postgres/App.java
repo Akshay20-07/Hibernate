@@ -36,9 +36,14 @@ public class App {
 			System.out.println(s);
 		}
 		
+		int b=50;
+		Query q1=session.createQuery("select sum(marks) from Student where marks > :b");
+		q1.setParameter("b",b);
+		Long marks=(Long) q1.uniqueResult();
+		
+		System.out.println(marks);
 		session.getTransaction().commit();
 		session.close();
-		
 		
 	}
 	
